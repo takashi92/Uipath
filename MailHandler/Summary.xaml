@@ -70,7 +70,6 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
@@ -190,10 +189,7 @@
         <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Total transactions: &quot; &amp; totalTrans.ToString]" />
       </Sequence>
       <FlowStep.Next>
-        <FlowDecision x:Name="__ReferenceID0" DisplayName="Has Next Row" sap:VirtualizedContainerService.HintSize="80,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-          <FlowDecision.Condition>
-            <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="totalTrans&gt;rowIndex" />
-          </FlowDecision.Condition>
+        <FlowDecision x:Name="__ReferenceID0" Condition="[totalTrans&gt;rowIndex]" DisplayName="Has Next Row" sap:VirtualizedContainerService.HintSize="80,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">270,126.5</av:Point>
@@ -272,10 +268,7 @@
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID5" DisplayName="IsBuyOrder" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-                      <FlowDecision.Condition>
-                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="OrderType.Contains(&quot;Mua&quot;)" />
-                      </FlowDecision.Condition>
+                    <FlowDecision x:Name="__ReferenceID5" Condition="[OrderType.Contains(&quot;Mua&quot;)]" DisplayName="IsBuyOrder" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -304,15 +297,9 @@
                             <Parallel sap:VirtualizedContainerService.HintSize="842,158" sap2010:WorkflowViewState.IdRef="Parallel_1">
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StockSymbol" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Volume" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">
-                                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Double)" ExpressionText="BuySymbolVolume" />
-                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">[StockSymbol]</InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">[Volume]</InArgument>
+                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">[BuySymbolVolume]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -323,15 +310,9 @@
                               </ui:InvokeWorkflowFile>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StockSymbol" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Amount" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">
-                                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Double)" ExpressionText="BuySymbolAmount" />
-                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">[StockSymbol]</InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">[Amount]</InArgument>
+                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">[BuySymbolAmount]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -390,15 +371,9 @@
                             <Parallel sap:VirtualizedContainerService.HintSize="842,158" sap2010:WorkflowViewState.IdRef="Parallel_2">
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StockSymbol" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Volume" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">
-                                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Double)" ExpressionText="SellSymbolVolume" />
-                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">[StockSymbol]</InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">[Volume]</InArgument>
+                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">[SellSymbolVolume]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -409,15 +384,9 @@
                               </ui:InvokeWorkflowFile>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="StockSymbol" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Amount" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">
-                                    <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Double)" ExpressionText="SellSymbolAmount" />
-                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Key">[StockSymbol]</InArgument>
+                                  <InArgument x:TypeArguments="x:Double" x:Key="in_Value">[Amount]</InArgument>
+                                  <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">[SellSymbolAmount]</InOutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -447,7 +416,7 @@
                   <av:Size x:Key="ShapeSize">200,66</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Summary result" sap:VirtualizedContainerService.HintSize="376,528" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Summary result" sap:VirtualizedContainerService.HintSize="689,1899" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="summaryData" />
                 </Sequence.Variables>
@@ -456,9 +425,9 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Start print result&quot;]" />
-                <ui:BuildDataTable DataTable="[summaryData]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;StockSymbol&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;BuyVolume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;BuyAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;SellVolume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;SellAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Volume_x0020_Available&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Profit_x0020_And_x0020_Loss&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Profit_x0020_Margin&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[BuySymbolVolume]">
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="647,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Start print result&quot;]" />
+                <ui:BuildDataTable DataTable="[summaryData]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="647,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;StockSymbol&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;BuyVolume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;BuyAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SellVolume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;SellAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Volume_x0020_Available&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Profit_x0020_And_x0020_Loss&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Profit_x0020_Margin&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="647,1422" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[BuySymbolVolume.Keys]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
                       <ActivityAction.Argument>
@@ -604,12 +573,12 @@
                   </ui:ForEach.Body>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
-                <ui:WriteRange AddHeaders="True" DataTable="[summaryData]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Summary" WorkbookPath="Data\DataBase.xlsx">
+                <ui:WriteRange AddHeaders="True" DataTable="[summaryData]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="647,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Summary" WorkbookPath="Data\DataBase.xlsx">
                   <ui:WriteRange.StartingCell>
                     <InArgument x:TypeArguments="x:String">
                       <Literal x:TypeArguments="x:String" Value="" />
