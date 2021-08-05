@@ -5493,15 +5493,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Takashi\\.nuget\\packages\\": {}
+    "C:\\Users\\hieup\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "MailHandler",
       "projectName": "MailHandler",
-      "projectPath": "C:\\Users\\Takashi\\OneDrive\\Documents\\UiPath\\MailHandler\\.local",
-      "packagesPath": "C:\\Users\\Takashi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Takashi\\OneDrive\\Documents\\UiPath\\MailHandler\\.local"
+      "projectPath": "D:\\Workspace\\Uipath\\MailHandler\\.local",
+      "packagesPath": "C:\\Users\\hieup\\.nuget\\packages\\",
+      "outputPath": "D:\\Workspace\\Uipath\\MailHandler\\.local"
     },
     "frameworks": {
       "net461": {
@@ -5542,7 +5542,7 @@
             "version": "[1.0.3, 1.0.3]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\Takashi\\AppData\\Local\\UiPath\\app-21.4.4\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\hieup\\AppData\\Local\\UiPath\\app-21.4.4\\runtime.json"
       }
     }
   }
