@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>858,836</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>797,736</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Summary_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -43,7 +43,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="58">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -72,6 +72,8 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="Summary" sap:VirtualizedContainerService.HintSize="664,671" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -87,6 +89,7 @@
       <Variable x:TypeArguments="x:String" Name="StockSymbol" />
       <Variable x:TypeArguments="x:Double" Name="Volume" />
       <Variable x:TypeArguments="x:Double" Name="Amount" />
+      <Variable x:TypeArguments="x:Boolean" Name="rowValueInvalid" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -109,7 +112,7 @@
           <av:PointCollection x:Key="ConnectorLocation">310,83 310,126.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Init" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Init" sap:VirtualizedContainerService.HintSize="376,674" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="sd:DataTable" Name="LastQuarterData" />
         </Sequence.Variables>
@@ -135,12 +138,18 @@
             </ui:ReadRange>
           </If.Then>
         </If>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CleanOldSummary workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="CleanOldSummary.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CleanOldSummary workflow" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="CleanOldSummary.xaml">
           <ui:InvokeWorkflowFile.Arguments>
             <scg:Dictionary x:TypeArguments="x:String, Argument" />
           </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
-        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,253" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
           <ui:MultipleAssign.AssignOperations>
             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -193,6 +202,12 @@
               </ui:AssignOperation>
             </scg:List>
           </ui:MultipleAssign.AssignOperations>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
         </ui:MultipleAssign>
         <ui:ReadRange AddHeaders="True" DataTable="[LastQuarterData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="ReportLastQuarter" WorkbookPath="Data\Configs.xlsx">
           <ui:ReadRange.Range>
@@ -207,7 +222,7 @@
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="750,481" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="884,481" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="lastQuarterSymbol" />
                   <Variable x:TypeArguments="x:Double" Name="lastQuarterVol" />
@@ -219,7 +234,7 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="708,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="842,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
                   <ui:MultipleAssign.AssignOperations>
                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
@@ -257,37 +272,25 @@
                     </scg:List>
                   </ui:MultipleAssign.AssignOperations>
                 </ui:MultipleAssign>
-                <Parallel sap:VirtualizedContainerService.HintSize="708,158" sap2010:WorkflowViewState.IdRef="Parallel_3">
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
+                <Parallel sap:VirtualizedContainerService.HintSize="842,158" sap2010:WorkflowViewState.IdRef="Parallel_3">
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Key">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="lastQuarterSymbol" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="in_Value">
-                        <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="lastQuarterVol" />
-                      </InArgument>
-                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">
-                        <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Double)" ExpressionText="BuySymbolVolume" />
-                      </InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_Key">[lastQuarterSymbol]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="in_Value">[lastQuarterVol]</InArgument>
+                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">[BuySymbolVolume]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:InvokeWorkflowFile>
                   <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="AddDictionary.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Key">
-                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="lastQuarterSymbol" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:Double" x:Key="in_Value">
-                        <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="lastQuarterAmount" />
-                      </InArgument>
-                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">
-                        <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Double)" ExpressionText="BuySymbolAmount" />
-                      </InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_Key">[lastQuarterSymbol]</InArgument>
+                      <InArgument x:TypeArguments="x:Double" x:Key="in_Value">[lastQuarterAmount]</InArgument>
+                      <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Double)" x:Key="io_Dictionary">[BuySymbolAmount]</InOutArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -315,87 +318,193 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">270,126.5</av:Point>
               <av:Size x:Key="ShapeSize">80,87</av:Size>
-              <av:PointCollection x:Key="TrueConnector">270,170 190,170 190,230</av:PointCollection>
+              <av:PointCollection x:Key="TrueConnector">270,170 220,170</av:PointCollection>
               <av:PointCollection x:Key="FalseConnector">350,170 430,170</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <FlowDecision.True>
-            <FlowStep x:Name="__ReferenceID3">
+            <FlowStep x:Name="__ReferenceID6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">59,230</av:Point>
-                  <av:Size x:Key="ShapeSize">262,60</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">321,260 360,260</av:PointCollection>
+                  <av:Point x:Key="ShapeLocation">20,137</av:Point>
+                  <av:Size x:Key="ShapeSize">200,66</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">120,203 120,246.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="sd:DataRow">[CurrentRow]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="sd:DataRow">[in_Transactions.Rows(rowIndex)]</InArgument>
-                </Assign.Value>
+              <Sequence DisplayName="GetRowData" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_9">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </Assign>
-              <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID4">
+                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="sd:DataRow">[CurrentRow]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="sd:DataRow">[in_Transactions.Rows(rowIndex)]</InArgument>
+                  </Assign.Value>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">360,234.5</av:Point>
-                      <av:Size x:Key="ShapeSize">200,51</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">460,285.5 460,316.5</av:PointCollection>
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
-                    <ui:MultipleAssign.AssignOperations>
-                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:String">[OrderType]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[CurrentRow("Loại lệnh(Order type)").ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:String">[StockSymbol]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[CurrentRow("Chứng khoán(Stock symbol)").ToString]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Double">[Volume]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(CurrentRow("Số lượng(Volume)").ToString.Trim)]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:Double">[Amount]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(CurrentRow("Thành tiền(Amount)").ToString.Trim)]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                      </scg:List>
-                    </ui:MultipleAssign.AssignOperations>
-                  </ui:MultipleAssign>
-                  <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID5" Condition="[OrderType.Contains(&quot;Mua&quot;)]" DisplayName="IsBuyOrder" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                </Assign>
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[OrderType]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[CurrentRow("Loại lệnh(Order type)").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[StockSymbol]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">[CurrentRow("Chứng khoán(Stock symbol)").ToString]</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                </ui:MultipleAssign>
+                <If Condition="[CurrentRow(&quot;Số lượng(Volume)&quot;) Is Nothing OrElse String.IsNullOrWhiteSpace(CurrentRow(&quot;Số lượng(Volume)&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_15">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[rowValueInvalid]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Row value of column Số lượng(Volume) invalid&quot;]" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Double">[Volume]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(CurrentRow("Số lượng(Volume)").ToString.Trim)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <If Condition="[CurrentRow(&quot;Thành tiền(Amount)&quot;) Is Nothing OrElse String.IsNullOrWhiteSpace(CurrentRow(&quot;Thành tiền(Amount)&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[rowValueInvalid]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Row value of column Thành tiền(Amount) invalid&quot;]" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Double">[Amount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Double">[Convert.ToDouble(CurrentRow("Thành tiền(Amount)").ToString.Trim)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </Sequence>
+              <FlowStep.Next>
+                <FlowDecision x:Name="__ReferenceID7" Condition="[rowValueInvalid]" DisplayName="rowValueInvalid" sap:VirtualizedContainerService.HintSize="89,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <av:Point x:Key="ShapeLocation">75.5,246.5</av:Point>
+                      <av:Size x:Key="ShapeSize">89,87</av:Size>
+                      <av:PointCollection x:Key="FalseConnector">164.5,290 460,290 460,316.5</av:PointCollection>
+                      <av:PointCollection x:Key="TrueConnector">75.5,290 45.5,290 45.5,560 219,560</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <FlowDecision.True>
+                    <FlowStep x:Name="__ReferenceID1">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">219,530</av:Point>
+                          <av:Size x:Key="ShapeSize">262,60</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">350,590 350,620 0.5,620 0.5,111.216 290,111.216 290,126.5</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[rowIndex]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[rowIndex +1]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                      <FlowStep.Next>
+                        <x:Reference>__ReferenceID0</x:Reference>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowDecision.True>
+                  <FlowDecision.False>
+                    <FlowDecision x:Name="__ReferenceID3" Condition="[OrderType.Contains(&quot;Mua&quot;)]" DisplayName="IsBuyOrder" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <av:Point x:Key="ShapeLocation">425,316.5</av:Point>
                           <av:Size x:Key="ShapeSize">70,87</av:Size>
-                          <av:PointCollection x:Key="TrueConnector">425,360 210,360 210,427</av:PointCollection>
+                          <av:PointCollection x:Key="TrueConnector">425,360 210,360 210,387</av:PointCollection>
                           <av:PointCollection x:Key="FalseConnector">495,360 520,360 520,427</av:PointCollection>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -403,9 +512,9 @@
                         <FlowStep x:Name="__ReferenceID2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">110,427</av:Point>
+                              <av:Point x:Key="ShapeLocation">110,387</av:Point>
                               <av:Size x:Key="ShapeSize">200,66</av:Size>
-                              <av:PointCollection x:Key="ConnectorLocation">210,493 210,560 219,560</av:PointCollection>
+                              <av:PointCollection x:Key="ConnectorLocation">210,453 210,483 350,483 350,530</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <Sequence DisplayName="Group Buy Order" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -445,36 +554,12 @@
                             </Parallel>
                           </Sequence>
                           <FlowStep.Next>
-                            <FlowStep x:Name="__ReferenceID1">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">219,530</av:Point>
-                                  <av:Size x:Key="ShapeSize">262,60</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">350,590 350,620 29,620 29,110 290,110 290,126.5</av:PointCollection>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:Int32">[rowIndex]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:Int32">[rowIndex +1]</InArgument>
-                                </Assign.Value>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Assign>
-                              <FlowStep.Next>
-                                <x:Reference>__ReferenceID0</x:Reference>
-                              </FlowStep.Next>
-                            </FlowStep>
+                            <x:Reference>__ReferenceID1</x:Reference>
                           </FlowStep.Next>
                         </FlowStep>
                       </FlowDecision.True>
                       <FlowDecision.False>
-                        <FlowStep x:Name="__ReferenceID6">
+                        <FlowStep x:Name="__ReferenceID4">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">420,427</av:Point>
@@ -524,20 +609,20 @@
                         </FlowStep>
                       </FlowDecision.False>
                     </FlowDecision>
-                  </FlowStep.Next>
-                </FlowStep>
+                  </FlowDecision.False>
+                </FlowDecision>
               </FlowStep.Next>
             </FlowStep>
           </FlowDecision.True>
           <FlowDecision.False>
-            <FlowStep x:Name="__ReferenceID7">
+            <FlowStep x:Name="__ReferenceID5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">430,137</av:Point>
                   <av:Size x:Key="ShapeSize">200,66</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Summary result" sap:VirtualizedContainerService.HintSize="833,2126" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <Sequence DisplayName="Summary result" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="sd:DataTable" Name="summaryData" />
                 </Sequence.Variables>
@@ -547,7 +632,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="791,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Start print result&quot;]" />
-                <ui:BuildDataTable DataTable="[summaryData]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="791,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Stock_x0020_Symbol&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Buy_x0020_Volume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Buy_x0020_Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Sell_x0020_Volume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Sell_x0020_Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Volume_x0020_Available&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Profit_x0020_And_x0020_Loss&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Profit_x0020_Margin&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+                <ui:BuildDataTable DataTable="[summaryData]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="791,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Stock_x0020_Symbol&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Buy_x0020_Volume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Buy_x0020_Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sell_x0020_Volume&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sell_x0020_Amount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Volume_x0020_Available&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Profit_x0020_And_x0020_Loss&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Profit_x0020_Margin&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
                 <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="791,1649" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[BuySymbolVolume.Keys]">
                   <ui:ForEach.Body>
                     <ActivityAction x:TypeArguments="x:String">
@@ -722,7 +807,7 @@
                             <InArgument x:TypeArguments="s:Object[]">[{symbol, buyVolume, buyAmount, sellVolume, sellAmount, volAvailable, profitOrLoss, profitMargin}]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[rowData]" DataTable="[summaryData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="569,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[rowData]" DataTable="[summaryData]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="713,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                       </Sequence>
                     </ActivityAction>
                   </ui:ForEach.Body>
@@ -733,7 +818,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:ForEach>
-                <ui:WriteRange AddHeaders="True" DataTable="[summaryData]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="647,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Summary" WorkbookPath="Data\DataBase.xlsx">
+                <ui:WriteRange AddHeaders="True" DataTable="[summaryData]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="791,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Summary" WorkbookPath="Data\DataBase.xlsx">
                   <ui:WriteRange.StartingCell>
                     <InArgument x:TypeArguments="x:String">
                       <Literal x:TypeArguments="x:String" Value="" />
@@ -747,12 +832,12 @@
       </FlowStep.Next>
     </FlowStep>
     <x:Reference>__ReferenceID2</x:Reference>
-    <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
     <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID5</x:Reference>
     <x:Reference>__ReferenceID6</x:Reference>
-    <x:Reference>__ReferenceID1</x:Reference>
     <x:Reference>__ReferenceID7</x:Reference>
   </Flowchart>
 </Activity>
