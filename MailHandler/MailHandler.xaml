@@ -442,12 +442,8 @@
                                   <TryCatch.Try>
                                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MBSMailHandler workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="MBSMailHandler.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InArgument x:TypeArguments="snm:MailMessage" x:Key="currentMail">
-                                          <mva:VisualBasicValue x:TypeArguments="snm:MailMessage" ExpressionText="currentMail" />
-                                        </InArgument>
-                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="mbsTable">
-                                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="mbsTable" />
-                                        </InOutArgument>
+                                        <InArgument x:TypeArguments="snm:MailMessage" x:Key="currentMail">[currentMail]</InArgument>
+                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="mbsTable">[mbsTable]</InOutArgument>
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
                                   </TryCatch.Try>
@@ -687,13 +683,13 @@
                                           <av:Size x:Key="ShapeSize">200,66</av:Size>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence DisplayName="Handle Result" sap:VirtualizedContainerService.HintSize="602,3002" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                      <Sequence DisplayName="Handle Result" sap:VirtualizedContainerService.HintSize="771,3524" sap2010:WorkflowViewState.IdRef="Sequence_26">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <If Condition="[hasException]" sap:VirtualizedContainerService.HintSize="560,51" sap2010:WorkflowViewState.IdRef="If_10">
+                                        <If Condition="[hasException]" sap:VirtualizedContainerService.HintSize="729,51" sap2010:WorkflowViewState.IdRef="If_10">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -704,24 +700,24 @@
                                             <Throw Exception="[new BusinessRuleException(&quot;Have unexpected exception. Stop job at &quot; &amp; countSuccessMail &amp; &quot; in total &quot; &amp; countTotalMail)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
                                           </If.Then>
                                         </If>
-                                        <ui:LogMessage DisplayName="End job" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Found no mail. Finish job: &quot; &amp; countSuccessMail &amp; &quot; case success in total: &quot; &amp; countTotalMail]">
+                                        <ui:LogMessage DisplayName="End job" sap:VirtualizedContainerService.HintSize="729,91" sap2010:WorkflowViewState.IdRef="LogMessage_24" Level="Info" Message="[&quot;Found no mail. Finish job: &quot; &amp; countSuccessMail &amp; &quot; case success in total: &quot; &amp; countTotalMail]">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
-                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="560,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Start print result&quot;]">
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="729,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Start print result&quot;]">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:LogMessage>
-                                        <Sequence DisplayName="Mbs process" sap:VirtualizedContainerService.HintSize="560,66" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                        <Sequence DisplayName="Mbs process" sap:VirtualizedContainerService.HintSize="729,617" sap2010:WorkflowViewState.IdRef="Sequence_30">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
@@ -926,7 +922,7 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:ForEachRow>
                                         </Sequence>
-                                        <Sequence DisplayName="Vps process" sap:VirtualizedContainerService.HintSize="560,1301" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                        <Sequence DisplayName="Vps process" sap:VirtualizedContainerService.HintSize="729,1301" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1336,13 +1332,13 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                           </ui:ForEachRow>
                                         </Sequence>
-                                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DataBase]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,651" sap2010:WorkflowViewState.IdRef="ForEachRow_9">
+                                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[DataBase]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="729,622" sap2010:WorkflowViewState.IdRef="ForEachRow_9">
                                           <ui:ForEachRow.Body>
                                             <ActivityAction x:TypeArguments="sd:DataRow">
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                                               </ActivityAction.Argument>
-                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,531" sap2010:WorkflowViewState.IdRef="Sequence_60">
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="695,502" sap2010:WorkflowViewState.IdRef="Sequence_60">
                                                 <Sequence.Variables>
                                                   <Variable x:TypeArguments="x:String" Name="formatDate" />
                                                   <Variable x:TypeArguments="x:String" Name="currentTradeDate" />
@@ -1352,7 +1348,7 @@
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_46">
+                                                <Assign sap:VirtualizedContainerService.HintSize="653,60" sap2010:WorkflowViewState.IdRef="Assign_46">
                                                   <Assign.To>
                                                     <OutArgument x:TypeArguments="x:String">[currentTradeDate]</OutArgument>
                                                   </Assign.To>
@@ -1360,7 +1356,7 @@
                                                     <InArgument x:TypeArguments="x:String">[CurrentRow("Ngày giao dịch(Trade date)").ToString]</InArgument>
                                                   </Assign.Value>
                                                 </Assign>
-                                                <If Condition="[DateTime.TryParseExact(currentTradeDate,&quot;dd/MM/yyyy&quot;,Nothing,Nothing,Nothing)]" sap:VirtualizedContainerService.HintSize="484,339" sap2010:WorkflowViewState.IdRef="If_18">
+                                                <If Condition="[DateTime.TryParseExact(currentTradeDate,&quot;dd/MM/yyyy&quot;,Nothing,Nothing,Nothing)]" sap:VirtualizedContainerService.HintSize="653,310" sap2010:WorkflowViewState.IdRef="If_18">
                                                   <If.Then>
                                                     <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_58">
                                                       <sap:WorkflowViewStateService.ViewState>
@@ -1379,12 +1375,20 @@
                                                     </Sequence>
                                                   </If.Then>
                                                   <If.Else>
-                                                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_59">
+                                                    <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_59">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
+                                                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_48">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:Object">[CurrentRow("Ngày giao dịch(Trade date)")]</OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">[CDate(CurrentRow("Ngày giao dịch(Trade date)").ToString).ToString("yyyy-MM-dd")]</InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
                                                     </Sequence>
                                                   </If.Else>
                                                 </If>
@@ -1398,17 +1402,11 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:ForEachRow>
-                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SortTable workflow" sap:VirtualizedContainerService.HintSize="560,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SortTable.xaml">
+                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SortTable workflow" sap:VirtualizedContainerService.HintSize="729,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="SortTable.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">
-                                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="DataBase" />
-                                            </InArgument>
-                                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SortTable">
-                                              <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="DataBase" />
-                                            </OutArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_SortColumn">
-                                              <Literal x:TypeArguments="x:String">Ngày giao dịch(Trade date)</Literal>
-                                            </InArgument>
+                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_DataTable">[DataBase]</InArgument>
+                                            <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_SortTable">[DataBase]</OutArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_SortColumn">Ngày giao dịch(Trade date)</InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1417,7 +1415,7 @@
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:InvokeWorkflowFile>
-                                        <ui:WriteRange AddHeaders="True" DataTable="[DataBase]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="560,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="DATABASE" WorkbookPath="Data\DataBase.xlsx">
+                                        <ui:WriteRange AddHeaders="True" DataTable="[DataBase]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="729,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="DATABASE" WorkbookPath="Data\DataBase.xlsx">
                                           <ui:WriteRange.StartingCell>
                                             <InArgument x:TypeArguments="x:String">
                                               <Literal x:TypeArguments="x:String" Value="" />
